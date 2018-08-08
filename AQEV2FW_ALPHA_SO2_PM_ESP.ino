@@ -6408,7 +6408,7 @@ void printCsvDataLine() {
     float so2_we_moving_average = 0.0f;
     float so2_aux_moving_average = 0.0f;
     num_samples = so2_we_ready && so2_aux_ready ? sample_buffer_depth : sample_buffer_idx;
-    if(so2_we_ready && so2_aux_ready && ((so2_we_ready && so2_aux_ready) || (sample_buffer_idx > 0))) {
+    if(init_so2_we_adc_ok && init_so2_aux_adc_ok && (num_samples > 0)) {
         float converted_value = 0.0f, compensated_value = 0.0f;
         so2_we_moving_average = calculateAverage(&(sample_buffer[SO2_WE_SAMPLE_BUFFER][0]), num_samples);
         so2_aux_moving_average = calculateAverage(&(sample_buffer[SO2_AUX_SAMPLE_BUFFER][0]), num_samples);
